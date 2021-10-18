@@ -5,6 +5,7 @@ import { COLORS, WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -30,6 +31,17 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side />
+        <NavMobile>
+          <a href="#">
+            <Icon id="shopping-bag" color={COLORS.gray[900]} strokeWidth={2}/>
+          </a>
+          <a href="#">
+            <Icon id="search" color={COLORS.gray[900]} strokeWidth={2}/>
+          </a>
+          <button onClick={() => setShowMobileMenu(true)}>
+            <Icon id="menu" color={COLORS.gray[900]} strokeWidth={2}/>
+          </button>
+        </NavMobile>
       </MainHeader>
 
       <MobileMenu
@@ -46,12 +58,36 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${props => props.theme.queries.tabletAndDown}{
+    border-top: 4px solid ${COLORS.gray[900]};
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${props => props.theme.queries.tabletAndDown}{
+    display: none;
+  }
+`;
+
+const NavMobile = styled.nav`
+    display: none;
+
+  @media ${props => props.theme.queries.tabletAndDown}{
+    display: flex;
+    gap: 16px;
+    a, button {
+      display: flex;
+      background-color: transparent;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+    }
+  }
 `;
 
 const Side = styled.div`

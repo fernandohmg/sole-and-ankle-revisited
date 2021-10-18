@@ -47,10 +47,19 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
+
+  @media ${props => props.theme.queries.tabletAndDown}{
+    flex-direction: column-reverse;
+    gap: 0;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+
+  @media ${props => props.theme.queries.tabletAndDown}{
+    flex-basis: 0;
+  }
 `;
 
 const MainColumn = styled.div`
